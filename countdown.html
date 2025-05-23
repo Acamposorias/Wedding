@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Our Wedding Countdown</title>
+  <style>
+    body { 
+      font-family: sans-serif; 
+      display: flex; 
+      height: 100vh; 
+      align-items: center; 
+      justify-content: center; 
+      background: #fdf6e3; 
+      color: #657b83;
+    }
+    #countdown {
+      font-size: 2.5rem;
+      padding: 2rem;
+      border: 2px solid #cb4b16;
+      border-radius: 8px;
+      background: #eee8d5;
+    }
+  </style>
+</head>
+<body>
+  <div id="countdown">Loading…</div>
+  <script>
+    // 1: Set your wedding date/time (local)
+    const wedding = new Date("2025-10-10T15:00:00");
+
+    // 2: Pick the element
+    const el = document.getElementById("countdown");
+
+    // 3: Update every second
+    setInterval(() => {
+      const now = new Date();
+      const diff = wedding - now;
+
+      if (diff <= 0) {
+        el.textContent = "Today’s the day! 💍";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const mins = Math.floor((diff / (1000 * 60)) % 60);
+      const secs = Math.floor((diff / 1000) % 60);
+
+      el.textContent = 
+        `${days}d ${hours}h ${mins}m ${secs}s`;
+    }, 1000);
+  </script>
+</body>
+</html>

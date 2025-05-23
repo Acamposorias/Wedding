@@ -4,36 +4,67 @@
   <meta charset="UTF-8">
   <title>Our Wedding Countdown</title>
   <style>
-    body { 
-      font-family: sans-serif; 
-      display: flex; 
-      height: 100vh; 
-      align-items: center; 
-      justify-content: center; 
-      background: #fdf6e3; 
+    body {
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      align-items: center;
+      justify-content: center;
+      background: #fdf6e3;
       color: #657b83;
+      margin: 0;
     }
     #countdown {
       font-size: 2.5rem;
-      padding: 2rem;
+      padding: 1.5rem;
       border: 2px solid #cb4b16;
       border-radius: 8px;
       background: #eee8d5;
+    }
+    .gifs {
+      display: flex;
+      gap: 2rem;
+      margin-top: 1.5rem;
+    }
+    .gifs img {
+      width: 100px;
+      height: 100px;
+    }
+    .peach {
+      animation: bounce 3s ease-in-out infinite;
+    }
+    .gomma {
+      animation: spin 5s linear infinite;
+    }
+    @keyframes bounce {
+      0%,100% { transform: translateY(0); }
+      50%     { transform: translateY(-20px); }
+    }
+    @keyframes spin {
+      0%   { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
   </style>
 </head>
 <body>
   <div id="countdown">Loading…</div>
-  <script>
-    // 1: Set your wedding date/time (local)
-    const wedding = new Date("2025-10-10T15:00:00");
+  <div class="gifs">
+    <!-- put your GIFs in an /assets folder -->
+    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.tenor.com%2FQOYACwlliJwAAAAC%2Fpeach-and-goma-peach-goma.gif&f=1&nofb=1&ipt=37f033bf8c2d2e2be7c36a43ded8748be35e8aef0f6c4b19031729a4db310110" alt="Peach" class="peach">
+    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F43%2Fd1%2F9f%2F43d19ffbe4f4d86f8c5f8207764971f9.gif&f=1&nofb=1&ipt=383f286e969c6fa52627cea621a8e0c20b63a1655cbb76e2184ae2cb9e6fa396" alt="Gomma" class="gomma">
+  </div>
 
-    // 2: Pick the element
+  <script>
+    // ◉ Set your wedding date/time (local)
+    const wedding = new Date("2026-03-04T12:00:00");
+
+    // ◉ Grab the countdown box
     const el = document.getElementById("countdown");
 
-    // 3: Update every second
+    // ◉ Update every second
     setInterval(() => {
-      const now = new Date();
+      const now  = new Date();
       const diff = wedding - now;
 
       if (diff <= 0) {
@@ -41,13 +72,12 @@
         return;
       }
 
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const days  = Math.floor(diff / (1000 * 60 * 60 * 24));
       const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const mins = Math.floor((diff / (1000 * 60)) % 60);
-      const secs = Math.floor((diff / 1000) % 60);
+      const mins  = Math.floor((diff / (1000 * 60)) % 60);
+      const secs  = Math.floor((diff / 1000) % 60);
 
-      el.textContent = 
-        `${days}d ${hours}h ${mins}m ${secs}s`;
+      el.textContent = `${days}d ${hours}h ${mins}m ${secs}s`;
     }, 1000);
   </script>
 </body>

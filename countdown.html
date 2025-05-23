@@ -2,18 +2,33 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Our Wedding Countdown</title>
-  <style>
+  <title>Musito and Musita - Legendary Wedding Countdown<style>
     body {
       font-family: sans-serif;
       display: flex;
       flex-direction: column;
-      height: 100vh;
       align-items: center;
       justify-content: center;
+      height: 100vh;
+      margin: 0;
       background: #fdf6e3;
       color: #657b83;
+    }
+    h1 {
+      font-size: 3rem;
       margin: 0;
+      color: #cb4b16;
+    }
+    h2 {
+      font-size: 1.5rem;
+      margin: 0 0 1.5rem;
+      color: #586e75;
+    }
+    .countdown-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
     }
     #countdown {
       font-size: 2.5rem;
@@ -22,12 +37,7 @@
       border-radius: 8px;
       background: #eee8d5;
     }
-    .gifs {
-      display: flex;
-      gap: 2rem;
-      margin-top: 1.5rem;
-    }
-    .gifs img {
+    .countdown-wrapper img {
       width: 100px;
       height: 100px;
     }
@@ -38,8 +48,8 @@
       animation: spin 5s linear infinite;
     }
     @keyframes bounce {
-      0%,100% { transform: translateY(0); }
-      50%     { transform: translateY(-20px); }
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(-20px); }
     }
     @keyframes spin {
       0%   { transform: rotate(0deg); }
@@ -48,23 +58,22 @@
   </style>
 </head>
 <body>
-  <div id="countdown">Loading…</div>
-  <div class="gifs">
-    <!-- put your GIFs in an /assets folder -->
-    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.tenor.com%2FQOYACwlliJwAAAAC%2Fpeach-and-goma-peach-goma.gif&f=1&nofb=1&ipt=37f033bf8c2d2e2be7c36a43ded8748be35e8aef0f6c4b19031729a4db310110" alt="Peach" class="peach">
-    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F43%2Fd1%2F9f%2F43d19ffbe4f4d86f8c5f8207764971f9.gif&f=1&nofb=1&ipt=383f286e969c6fa52627cea621a8e0c20b63a1655cbb76e2184ae2cb9e6fa396" alt="Gomma" class="gomma">
+  <h1>Musito and Musita</h1>
+  <h2>Legendary Wedding</h2>
+  <div class="countdown-wrapper">
+    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.tenor.com%2FQOYACwlliJwAAAAC%2Fpeach-and-goma-peach-goma.gif&f=1&nofb=1&ipt=37f033bf8c2d2e2be7c36a43ded8748be35e8aef0f6c4b19031729a4db310110" alt="Peach GIF" class="peach">
+    <div id="countdown">Loading…</div>
+    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F43%2Fd1%2F9f%2F43d19ffbe4f4d86f8c5f8207764971f9.gif&f=1&nofb=1&ipt=383f286e969c6fa52627cea621a8e0c20b63a1655cbb76e2184ae2cb9e6fa396"  alt="Gomma GIF" class="gomma">
   </div>
 
   <script>
-    // ◉ Set your wedding date/time (local)
+    // Set the wedding date/time (local)
     const wedding = new Date("2026-03-04T12:00:00");
-
-    // ◉ Grab the countdown box
     const el = document.getElementById("countdown");
 
-    // ◉ Update every second
+    // Update every second
     setInterval(() => {
-      const now  = new Date();
+      const now = new Date();
       const diff = wedding - now;
 
       if (diff <= 0) {
